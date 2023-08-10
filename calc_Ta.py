@@ -4,7 +4,7 @@ import numpy as np
 def calc_Ta(filename):
     #takes a text file with calibrated lowres on/off data from the 20m and returns the aperture temp
     #also reads and returns center_freq from file
-    #NOTE: Only reads data power data from XX column
+    #NOTE: Only reads power data from XX column 
     
     #_power arrays sum recorded powers
     on_power = []
