@@ -2,9 +2,10 @@ import os
 import numpy as np
 
 def calc_Ta(filename):
-    #takes a text file with calibrated lowres on/off data from the 20m and returns the aperture temp
-    #also reads and returns center_freq from file
-    #NOTE: Only reads power data from XX column 
+    #reads data and calculates aperture temperature
+    #input: calibrated data file from 20m lowres on/off scan of a point source
+    #output: mean Ta, std Ta, observation frequency
+    #NOTE: Only reads power data from XX column (because YY data was bad)
     
     #_power arrays sum recorded powers
     on_power = []
@@ -57,4 +58,4 @@ def calc_Ta(filename):
     correction = np.exp(A*0.01) #assumes tau = 0.01
     corrected_aperture_temps = aperture_temps * correction
     
-    return np.mean(corrected_aperture_temps), center_freq
+    return np.mean(corrected_aperture_temps), np.std(corrected_aperture_temps), center_freq
