@@ -53,7 +53,7 @@ def calc_Ta(filename):
     on_power_avg = np.divide(on_power,on_count)
     off_power_avg = np.divide(off_power,off_count)
     aperture_temps = np.subtract(on_power_avg,off_power_avg)
-    A = 1/(np.sin(elevation*180/np.pi))
+    A = 1/(np.sin(elevation*180/np.pi)) #approximation valid for elev > 15 deg
     correction = np.exp(A*0.01) #assumes tau = 0.01
     corrected_aperture_temps = aperture_temps * correction
     
