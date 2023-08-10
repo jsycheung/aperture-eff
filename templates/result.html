@@ -1,7 +1,8 @@
 {% extends "home_base.html" %}
-{% block result %}
-Observation frequency:
+{% block body %}
+Observation frequency: {{ obs_freq }}
 Sv:
+Using coefficients: \(a_0=\){{coeff_dict[src]["a0"]}} ; \(a_1=\){{coeff_dict[src]["a1"]}} ; \(a_2=\){{coeff_dict[src]["a2"]}} ; \(a_3=\){{coeff_dict[src]["a3"]}} ; \(a_4=\){{coeff_dict[src]["a4"]}} ; \(a_0=\){{coeff_dict[src]["a5"]}}
 $$T_a$$:
 $$\eta_a$$:
 $$A_{eff}$$
