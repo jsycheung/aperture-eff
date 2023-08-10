@@ -1,0 +1,15 @@
+{% extends "home_base.html" %}
+{% block calculation %}
+{{ cal_form.csrf_token() }}
+Upload text file to get started!
+{{ cal_form.file.label }}
+{{ cal_form.file }}
+
+{{ cal_form.src_name.label }}
+{{ cal_form.src_name }}
+
+{{ cal_form.diameter.label }}
+{{ cal_form.diameter }}
+
+{{ cal_form.submit }}
+{% endblock %}

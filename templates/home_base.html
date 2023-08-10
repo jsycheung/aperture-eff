@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+
+{% block calculation %}
+{% endblock %}
+
+{% block result %}
+{% endblock %}
+
+First, we have to calculate 
+
+The spectral flux density for each source is frequency dependent, it was obtained by fitting the data with a
+polynomial function of the form:
+$$\log S = a_0 + a_1 \log (\nu_G) + a_2 [\log (\nu_G)]^2 + a_3 [\log (\nu_G)]^3 + \cdots$$
+
+The fitted coefficients for the 20 sources are as follows:
+<table>
+    <tr>
+        <th>Source</th>
+        <th>$$a_0$$</th>
+        <th>$$a_1$$</th>
+        <th>$$a_2$$</th>
+        <th>$$a_3$$</th>
+        <th>$$a_4$$</th>
+        <th>$$a_5$$</th>
+        <th>$$\chi^2$$</th>
+        <th>Frequency Range</th>
+    </tr>
+    {% for key, values in coeff_dict.items() %}
+    <tr>
+        <td>{{ key }}</td>
+        <td>{{ values["a0"] }}</td>
+        <td>{{ values["a1"] }}</td>
+        <td>{{ values["a2"] }}</td>
+        <td>{{ values["a3"] }}</td>
+        <td>{{ values["a4"] }}</td>
+        <td>{{ values["a5"] }}</td>
+        <td>{{ values["chi2"] }}</td>
+        <td>{{ values["freq_range"] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
