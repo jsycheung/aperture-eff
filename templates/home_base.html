@@ -6,11 +6,15 @@
 
 {% block result %}
 {% endblock %}
-
-First, we have to calculate 
-
+<br>
+The aperture efficiency is given by
+$$A_{eff} = \eta_a \frac{\pi}{4} D^2$$
+<br>
+$$\eta_a = \frac{3520}{D^2}\frac{T_a^\prime}{S_\nu}$$
+where D is the diameter in meters, \(T_a^\prime\) is the corrected antenna temperature in Kelvin, and \(S_\nu\) is the spectral flux density in Jansky.
+<br>
 The spectral flux density for each source is frequency dependent, it was obtained by fitting the data with a
-polynomial function of the form:
+polynomial function of the form
 $$\log S = a_0 + a_1 \log (\nu_G) + a_2 [\log (\nu_G)]^2 + a_3 [\log (\nu_G)]^3 + \cdots$$
 
 The fitted coefficients for the 20 sources are as follows:
