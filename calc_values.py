@@ -4,7 +4,7 @@ import numpy as np
 def calc_Ta(filename):
     #reads data and calculates aperture temperature
     #input: calibrated data file from 20m lowres on/off scan of a point source
-    #output: mean Ta, std Ta, observation frequency
+    #output: mean Ta, std Ta, observation center frequency
     #NOTE: Only reads power data from XX column (because YY data was bad)
     
     #_power arrays sum recorded powers
@@ -59,3 +59,14 @@ def calc_Ta(filename):
     corrected_aperture_temps = aperture_temps * correction
     
     return np.mean(corrected_aperture_temps), np.std(corrected_aperture_temps), center_freq
+
+
+def calc_S(center_freq,coeffs):
+    #calculate flux
+    #assumes flux can be calculated with a polynomial as in:
+    #https://iopscience.iop.org/article/10.3847/1538-4365/aa6df9/pdf
+    logS = 0
+    logV = np.log10(center_freq)
+    for i, a in enumerate(coeffs):
+        logS += a * logV**i
+    return 10**logS
