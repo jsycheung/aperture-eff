@@ -1,10 +1,32 @@
 {% extends "home_base.html" %}
 {% block body %}
-Observation frequency: {{ obs_freq }}
-Sv:
-Using coefficients: \(a_0=\){{coeff_dict[src]["a0"]}} ; \(a_1=\){{coeff_dict[src]["a1"]}} ; \(a_2=\){{coeff_dict[src]["a2"]}} ; \(a_3=\){{coeff_dict[src]["a3"]}} ; \(a_4=\){{coeff_dict[src]["a4"]}} ; \(a_0=\){{coeff_dict[src]["a5"]}}
-$$T_a$$:
-$$\eta_a$$:
-$$A_{eff}$$
-<a href="{{ url_for('home') }}">return to calculation page</a>
+<div class="main-div">
+<h2>Results</h2>
+Source: {{ src }}
+<br>
+Diameter of aperture \(D\) (m): {{ diameter }}
+<br>
+Observation frequency \(\nu_G\) (GHz): {{ obs_freq }}
+<br>
+Corrected antenna temperature \(T_a^\prime\) (K): {{ t_a_prime }}
+<br>
+Standard deviation of antenna temperature (K): {{ t_a_std }}
+<br>
+Spectral flux density \(S_\nu\) (Jy): {{ s_v }}
+<br>
+Using coefficients:
+\(a_0=\){% if coeff_dict[src]["a0"] %}{{coeff_dict[src]["a0"]}}{% else %}\(\cdots\){% endif %}
+\(a_1=\){% if coeff_dict[src]["a1"] %}{{coeff_dict[src]["a1"]}}{% else %}\(\cdots\){% endif %}
+\(a_2=\){% if coeff_dict[src]["a2"] %}{{coeff_dict[src]["a2"]}}{% else %}\(\cdots\){% endif %}
+\(a_3=\){% if coeff_dict[src]["a3"] %}{{coeff_dict[src]["a3"]}}{% else %}\(\cdots\){% endif %}
+\(a_4=\){% if coeff_dict[src]["a4"] %}{{coeff_dict[src]["a4"]}}{% else %}\(\cdots\){% endif %}
+\(a_5=\){% if coeff_dict[src]["a5"] %}{{coeff_dict[src]["a5"]}}{% else %}\(\cdots\){% endif %}
+<br>
+\(\eta_a\): {{ eta_a }}
+<br>
+\(A_{eff}\): {{ a_eff }}
+<br>
+<br>
+<a id="return" href="{{ url_for('home') }}">Return to homepage</a>
+</div>
 {% endblock %}

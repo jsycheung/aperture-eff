@@ -6,7 +6,7 @@ body {
   background-color: #191129;
 }
 
-#file-div {
+.main-div {
   color: white;
   background-color: #191129;
   width: 70%;
@@ -15,8 +15,8 @@ body {
   border-radius: 20px;
 }
 
-#file-div h2 {
-  text-align: center;
+.main-div h2 {
+  text-align: center !important;
 }
 
 #container {
@@ -34,25 +34,31 @@ select,
   padding-left: 2em !important;
 }
 
-nav {
+.nav-container {
   position: fixed !important;
   top: 0;
   width: 100%;
+  z-index: 10;
 }
 
-#submit {
+#submit,
+#return {
+  display: inline-block;
   border-radius: 8px;
   border: 0;
   color: white;
-  background-color: #211d54;
+  background-color: #2f2983;
   font-weight: 700;
   width: 100%;
   margin: auto;
   padding: 10px;
   font-size: 20px;
+  text-decoration: none;
+  text-align: center;
 }
 
-#submit:hover {
-  background-color: #242a68;
+#submit:hover,
+#return:hover {
+  background-color: #323ec7;
   transition-duration: 200ms;
 }

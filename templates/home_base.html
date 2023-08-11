@@ -12,6 +12,7 @@
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
+    <div class="nav-container">
     <nav class="navbar bg-blue">
         <div class="navbar-nav">
             <h3><a class="nav-link text-white" href="{{ url_for('home') }}">Aperture Efficiency Calculation</a></h3>
@@ -27,6 +28,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
+    </div>
 
     <div id="container">
     {% block body %}
@@ -36,7 +38,8 @@ The aperture efficiency is given by
 $$A_{eff} = \eta_a \frac{\pi}{4} D^2$$
 <br>
 $$\eta_a = \frac{3520}{D^2}\frac{T_a^\prime}{S_\nu}$$
-where \(D\) is the diameter in meters, \(T_a^\prime\) is the corrected antenna temperature in Kelvin, and \(S_\nu\) is the spectral flux density in Jansky.
+<br>$$T_a^\prime = T_a e^{\tau_0 A}$$
+where \(A\) is airmass towards which the measurement is made (assuming elevation is larger than \(15^\circ, A = \frac{1}{\sin(\text{elevation (arcsec)})}\)), \(\tau_0\) is Atmospheric optical depth at the zenith assumed to be 0.01, \(T_a\) is the observed source antenna temperature in Kelvin, \(T_a^\prime\) is the corrected antenna temperature in Kelvin, \(D\) is the diameter in meters, and \(S_\nu\) is the spectral flux density in Jansky.
 <br><br>
 The spectral flux density for each source is frequency dependent, it was obtained by fitting the data with a
 polynomial function of the form

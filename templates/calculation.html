@@ -2,7 +2,7 @@
 {% block body %}
 <form id="cal-form" action="{{ url_for('result') }}" method="POST" enctype="multipart/form-data">
 {{ cal_form.csrf_token() }}
-<div id="file-div">
+<div class="main-div">
 <h2>Upload Your Continuum Text File, We've Got You Covered.</h2>
 <br>
 {{ cal_form.file(class_="form-control form-control-lg") }}
