@@ -61,7 +61,6 @@ def calc_Ta_obs(filename):
     A = 1/(np.sin(elevation*np.pi/180))
     correction = np.exp(A*0.01)  # assumes tau = 0.01
     corrected_antenna_temps = antenna_temps * correction
-
     return np.mean(corrected_antenna_temps), np.std(corrected_antenna_temps), center_freq
 
 

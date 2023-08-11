@@ -30,11 +30,13 @@ def result():
     if cal_form.validate_on_submit():
         file = request.files['file']
         t_a_prime, t_a_std, obs_freq = calc_Ta_obs(file)
+        print(t_a_prime)
         src_idx = cal_form.src_name.data
         src = src_list[src_idx][1]
         diameter = cal_form.diameter.data
-        s_v = coeff_dict[src]["a0"] + coeff_dict[src]["a1"]*math.log10(obs_freq) + coeff_dict[src]["a2"]*(math.log10(obs_freq))**2 + coeff_dict[src]["a3"]*(
-            math.log10(obs_freq))**3 + coeff_dict[src]["a4"]*(math.log10(obs_freq))**4 + coeff_dict[src]["a5"]*(math.log10(obs_freq))**5
+        log_s_v = coeff_dict[src]["a0"] + coeff_dict[src]["a1"]*math.log10(obs_freq) + coeff_dict[src]["a2"]*((math.log10(obs_freq))**2) + coeff_dict[src]["a3"]*((
+            math.log10(obs_freq))**3) + coeff_dict[src]["a4"]*((math.log10(obs_freq))**4) + coeff_dict[src]["a5"]*((math.log10(obs_freq))**5)
+        s_v = 10**log_s_v
         eta_a = 3520/(float(diameter)**2)*t_a_prime/s_v
         a_eff = eta_a * math.pi / 4 * (float(diameter)**2)
         flash("Calculation successful!", "success")
